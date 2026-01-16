@@ -6,7 +6,23 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  // write your code here
+  const result = sourceString
+    .trim()
+    .split(';')
+    .filter((s) => s.trim() !== '');
+  const obj = {};
+
+  for (const mod of result) {
+    const idX = mod.indexOf(':');
+
+    const key = mod.slice(0, idX).trim();
+    const value = mod.slice(idX + 1, mod.length).trim();
+
+    // @ts-ignore
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 module.exports = convertToObject;
