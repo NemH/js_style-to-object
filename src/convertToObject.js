@@ -12,7 +12,7 @@ function convertToObject(sourceString) {
     .split(';')
     .filter((s) => s.trim() !== '');
 
-  const obj = {};
+  const stylesObject = {};
 
   result.forEach((mod) => {
     const idX = mod.indexOf(':');
@@ -21,10 +21,10 @@ function convertToObject(sourceString) {
     const value = mod.slice(idX + 1, mod.length).trim();
 
     // @ts-ignore
-    obj[key] = value;
+    stylesObject[key] = value;
   });
 
-  return obj;
+  return stylesObject;
 }
 
 module.exports = convertToObject;
