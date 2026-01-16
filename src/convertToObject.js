@@ -5,14 +5,16 @@
  *
  * @return {object}
  */
+
 function convertToObject(sourceString) {
   const result = sourceString
     .trim()
     .split(';')
     .filter((s) => s.trim() !== '');
+
   const obj = {};
 
-  for (const mod of result) {
+  result.forEach((mod) => {
     const idX = mod.indexOf(':');
 
     const key = mod.slice(0, idX).trim();
@@ -20,8 +22,9 @@ function convertToObject(sourceString) {
 
     // @ts-ignore
     obj[key] = value;
-  }
+  });
 
   return obj;
 }
+
 module.exports = convertToObject;
